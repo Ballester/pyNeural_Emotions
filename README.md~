@@ -1,10 +1,10 @@
 The configuration file is organized as follows:
 
-n_nodes: Number of nodes in the tree
-n_edges: Number of edges in the tree
+nnodes: Number of nodes in the tree
+nedges: Number of edges in the tree
 
 followed by n_nodes of:
-node: Number_of_node Level_of_node
+node_name Number_of_node Level_of_node
 
 followd by n_edges of:
 edge: From_node To_node

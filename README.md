@@ -1,6 +1,7 @@
 The configuration file is organized as follows:
 
 nnodes: Number of nodes in the tree
+
 nedges: Number of edges in the tree
 
 followed by n_nodes of:

@@ -25,8 +25,14 @@ nodes = Nodes()
 for i in xrange(n_nodes):
 	aux = fid.readline()
 	aux = aux.split()
-	nodes.nodes.append(aux[0])
+	nodes.node_names.append(aux[0])
+	nodes.node_number.append(int(aux[2]))
+	nodes.node_level.append(int(aux[2]))
+	
+for i in xrange(n_edges):
+	aux = fid.readline()
+	aux = aux.split()
 	nodes.edges_from.append(int(aux[1]))
 	nodes.edges_to.append(int(aux[2]))
-	
+	print nodes.edges_from
 
