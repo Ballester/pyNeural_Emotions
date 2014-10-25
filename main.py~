@@ -3,7 +3,7 @@ import time
 from node import Nodes
 
 #Configuration file:
-config = '/home/ballester/NetBeansProjects/pyNeural_Emotions/config/config.ini'
+config = '/home/ballester/Documents/pyNeural_Emotions/config/config.ini'
 
 try:
 	fid = open(config)	
@@ -25,7 +25,7 @@ nodes = Nodes()
 for i in xrange(n_nodes):
 	aux = fid.readline()
 	aux = aux.split()
-	nodes.node_names.append(aux[0])
+	nodes.node_name.append(aux[0])
 	nodes.node_number.append(int(aux[2]))
 	nodes.node_level.append(int(aux[2]))
 	
@@ -34,5 +34,15 @@ for i in xrange(n_edges):
 	aux = aux.split()
 	nodes.edges_from.append(int(aux[1]))
 	nodes.edges_to.append(int(aux[2]))
-	print nodes.edges_from
+	nodes.edges_rel.append(float(aux[3]))
+
+while True:
+    nodes.update()
+
+
+
+
+
+
+
 

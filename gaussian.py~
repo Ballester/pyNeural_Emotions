@@ -1,10 +1,12 @@
-
+from math import pi, exp
+from scipy import signal
 
 class Gaussian:
     def normalize(x, y):
 	    return x/(x+y)
 	
-
+    def inputSignal(x, dev):
+        return signal.gaussian(x, dev)
     
 
 '''
