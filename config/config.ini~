@@ -1,12 +1,12 @@
 nnodes 5
 nedges 4
 w_threshold 5
-node1 0 1 0.5
-node2 1 2 0.5
-node3 2 1 0.5
-node4 3 4 0.5
-node5 4 4 0.5
-edge 1 3 1.0
-egde 4 2 1.01
-edge 2 4 1.02
-edge 3 1 1.0
+node1 1 0.5
+node2 2 0.5
+node3 1 0.5
+node4 4 0.5
+node5 4 0.5
+edge node1 node3 1
+egde node4 node2 2
+edge node2 node4 2
+edge node3 node1 1
