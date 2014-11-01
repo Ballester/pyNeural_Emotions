@@ -33,8 +33,8 @@ for i in xrange(n_nodes):
 	aux = aux.split()
 	nodes.node_name.append(aux[0])
 	nodes.G.add_node(aux[0])
-	nodes.node_level.append(int(aux[2]))
-	nodes.node_power.append(float(aux[3]))
+	nodes.node_level.append(int(aux[1]))
+	nodes.node_power.append(float(aux[2]))
 	
 for i in xrange(n_edges):
 	aux = fid.readline()
@@ -48,7 +48,7 @@ for i in xrange(n_edges):
 nx.draw(nodes.G)
 plot.show()
 while True:
-    print nodes.node_power
+    #print nodes.node_power
     nodes.update(10)
     time.sleep(2)
 

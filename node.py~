@@ -1,5 +1,6 @@
 from math import pi, exp
 from scipy import signal
+from random import randn
 import networkx as nx
 
 #todo: Add thread for external input and update
@@ -29,7 +30,7 @@ class Nodes:
         for i in xrange(len(self.edges_from)):
             pos_from = self.node_name.index(self.edges_from[i])
             pos_to = self.node_name.index(self.edges_to[i])
-            aux[pos_to] = self.node_power[pos_to] * (1 + self.node_power[pos_to] + (self.window[25] * self.edges_rel[i] * self.node_power[pos_from]))
+            aux[pos_to] = self.node_power[pos_to] * (1 + self.node_power[pos_to] + (self.window[randn(20,30)] * self.edges_rel[i] * self.node_power[pos_from]))
             
             qt[pos_to] += 1
 
@@ -47,7 +48,7 @@ class Nodes:
             
             for j in xrange(len(self.node_level)):
                 if self.node_level[j] == i: 
-                    print count, " ", i
+                    #print count, " ", i
                     self.node_power[j] /= count
             
             

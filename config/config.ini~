@@ -5,7 +5,7 @@ node1 1 0.5
 node2 2 0.5
 node3 1 0.5
 node4 4 0.5
-node5 4 0.5
+node5 2 0.5
 edge node1 node3 1
 egde node4 node2 2
 edge node2 node4 2
