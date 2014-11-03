@@ -5,7 +5,7 @@ import networkx as nx
 import matplotlib.pyplot as plot
 
 #Configuration file:
-config = '/home/ballester/Documents/pyNeural_Emotions/config/config.ini'
+config = '/home/usuariopadrao/Documentos/Ballester/pyNeural_Emotions/config/config.ini'
 
 try:
 	fid = open(config)	
@@ -47,10 +47,15 @@ for i in xrange(n_edges):
 
 nx.draw(nodes.G)
 plot.show()
+time_check = time.time()
 while True:
-    print nodes.node_power
-    nodes.update(10)
-    time.sleep(2)
+    aux = time.time()
+    if aux - time_check > 2.0:
+        time_check = aux
+        nodes.update(10)
+        print nodes.node_power
+    
+    
 
 
 
