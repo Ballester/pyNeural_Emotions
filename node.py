@@ -17,6 +17,7 @@ class Nodes:
 
     def inputSignal(self, x, dev):
         self.window = signal.gaussian(x, dev)
+      
 
     def update(self, stddev):
         aux = []
@@ -50,6 +51,14 @@ class Nodes:
                 if self.node_level[j] == i: 
                     #print count, " ", i
                     self.node_power[j] /= count
+                    
+                    
+    def externalInput(self, feeling, up_dev, power):
+        for i in xrange(len(self.node_name)):
+            if self.node_name[i] == feeling:
+                self.node_power[i] += power
+                print 'Input in node - ', self.node_name[i], ' - ', power
+                self.update(up_dev)
             
             
             
