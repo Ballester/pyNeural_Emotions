@@ -33,6 +33,10 @@ update_deviation = float(aux[1])
 
 aux = fid.readline()
 aux = aux.split()
+max_power = float(aux[1])
+
+aux = fid.readline()
+aux = aux.split()
 n_nodes = int(aux[1])
 
 aux = fid.readline()
@@ -43,7 +47,7 @@ aux = fid.readline()
 aux = aux.split()
 wt = int(aux[1])
 
-nodes = Nodes()
+nodes = Nodes(max_power)
 feelings = Feelings()
 
 for i in xrange(n_nodes):

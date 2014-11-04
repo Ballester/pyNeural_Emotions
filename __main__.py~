@@ -33,6 +33,10 @@ update_deviation = float(aux[1])
 
 aux = fid.readline()
 aux = aux.split()
+max_power = float(aux[1])
+
+aux = fid.readline()
+aux = aux.split()
 n_nodes = int(aux[1])
 
 aux = fid.readline()
@@ -76,7 +80,7 @@ while True:
         
     if aux - time_check_external > external_delay:
         time_check_external = aux
-        feelings.compute(external_deviation, nodes)
+        feelings.compute(external_deviation, update_deviation, nodes)
     	
     	
     

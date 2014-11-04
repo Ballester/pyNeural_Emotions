@@ -1,6 +1,7 @@
 external_delay 2
 update_delay 2
 external_deviation 2
+update_deviation 10
 nnodes 10
 nedges 10
 w_threshold 5
