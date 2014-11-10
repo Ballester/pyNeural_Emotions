@@ -64,19 +64,23 @@ for i in xrange(n_edges):
 	nodes.edges_from.append(aux[1])
 	nodes.edges_to.append(aux[2])
 	nodes.edges_rel.append(float(aux[3])/10**wt + 1)
-	edge = (aux[1],aux[2])
+	edge = (aux[1], aux[2])
 	nodes.G.add_edge(*edge)
+
+print nodes.node_power
 
 nx.draw(nodes.G)
 plot.show()
 time_check_update = time.time()
 time_check_external = time_check_update
+
 while True:
     aux = time.time()  
     if aux - time_check_update > update_delay:
         time_check_update = aux
         nodes.update(update_deviation)
         print nodes.node_power
+        #print nodes.node_name
         
     if aux - time_check_external > external_delay:
         time_check_external = aux

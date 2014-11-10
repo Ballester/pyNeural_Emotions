@@ -34,19 +34,13 @@ class Nodes:
             pos_to = self.node_name.index(self.edges_to[i])
             aux[pos_to] = self.node_power[pos_to] * (1 + self.node_power[pos_to] + (self.window[randint(20,30)] * self.edges_rel[i] * self.node_power[pos_from]))
             
+            print aux[pos_to], " - ", self.node_name[pos_to]
             qt[pos_to] += 1
 
         #Case if there is more than one relation:
         for i in xrange(len(self.node_level)):
             if aux[i] != -1:
-                if aux[i] > self.max_power:
-                    self.node_power[i] = max_power
-                
-                elif aux[i] < 1.0 - self.max_power:
-                    self.node_power[i] = 1.0 - self.max_power
-                    
-                else:
-                    self.node_power[i] = float(aux[i]/qt[i])
+                self.node_power[i] = float(aux[i]/qt[i])
                 
                 
         #Normalize by level:
