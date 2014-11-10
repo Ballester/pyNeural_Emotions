@@ -59,15 +59,18 @@ for i in xrange(n_nodes):
 	nodes.node_power.append(float(aux[2]))
 	
 for i in xrange(n_edges):
-	aux = fid.readline()
-	aux = aux.split()
-	nodes.edges_from.append(aux[1])
-	nodes.edges_to.append(aux[2])
-	nodes.edges_rel.append(float(aux[3])/10**wt + 1)
-	edge = (aux[1], aux[2])
-	nodes.G.add_edge(*edge)
+    aux = fid.readline()
+    aux = aux.split()
+    nodes.edges_from.append(aux[1])
+    nodes.edges_to.append(aux[2])
+    #Difference in the time of reading:
+    nodes.edges_rel.append(-float(aux[3])/10**wt + 1)
+	    
+    edge = (aux[1], aux[2])
+    nodes.G.add_edge(*edge)
 
 print nodes.node_power
+print nodes.edges_rel
 
 nx.draw(nodes.G)
 plot.show()
@@ -84,7 +87,7 @@ while True:
         
     if aux - time_check_external > external_delay:
         time_check_external = aux
-        feelings.compute(external_deviation, update_deviation, nodes)
+        #feelings.compute(external_deviation, update_deviation, nodes)
     	
     	
     

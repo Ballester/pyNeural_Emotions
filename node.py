@@ -32,7 +32,9 @@ class Nodes:
         for i in xrange(len(self.edges_from)):
             pos_from = self.node_name.index(self.edges_from[i])
             pos_to = self.node_name.index(self.edges_to[i])
+            #if self.edges_rel[i] > 0.0:
             aux[pos_to] = self.node_power[pos_to] * (1 + self.node_power[pos_to] + (self.window[randint(20,30)] * self.edges_rel[i] * self.node_power[pos_from]))
+           
             
             #print aux[pos_to], " - ", self.node_name[pos_to]
             qt[pos_to] += 1
