@@ -1,5 +1,0 @@
-class Nodes:
-	def __init__():
-		self.nodes = []
-		self.edges_from = []
-		self.edges_to = []
