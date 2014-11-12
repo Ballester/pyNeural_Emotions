@@ -5,24 +5,24 @@ update_deviation 10
 max_power 0.9
 nnodes 10
 nedges 10
-w_threshold 1
+w_threshold 2
 Joy 1 0.7
 Distress 1 0.3
 Hope 2 0.6
 Fear 2 0.4
 Satisfaction 3 0.9
 Disappointment 3 0.1
-Resentment 4 0.5
-Happy-for 4 0.5
-Gloating 5 0.5
-Pity 5 0.5
-edge Joy Distress 5
-edge Hope Fear 1
-edge Satisfaction Disappointment 1
-edge Resentment Happy-for 1
-edge Gloating Pity 1
-edge Distress Joy 1
-edge Fear Hope 1
-edge Disappointment Satisfaction 1
-edge Happy-for Resentment 1
-edge Pity Gloating 1
+Resentment 4 0.6
+Happy-for 4 0.4
+Gloating 5 0.05
+Pity 5 0.95
+edge Joy Distress 2
+edge Hope Fear 2
+edge Satisfaction Disappointment 2
+edge Resentment Happy-for 2
+edge Gloating Pity 2
+edge Distress Joy 2
+edge Fear Hope 2
+edge Disappointment Satisfaction 2
+edge Happy-for Resentment 2
+edge Pity Gloating 2

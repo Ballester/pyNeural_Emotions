@@ -7,7 +7,7 @@ class Feelings:
     def __init__(self):
 		#Actual feelings to be inserted
         self.outside_list = []
-        external_file = '/home/ballester/Documents/lamsa/pyNeural_Emotions/config/external.in'
+        external_file = 'config/external.in'
         try:
             self.fid = open(external_file)
         except:
@@ -38,7 +38,6 @@ class Feelings:
                 #print external[0], '- aqui'
                 nodes.externalInput(external[0], up_dev, random.uniform((float(external[2])-dev), float(external[2])+dev)/10.0)
             
-			
             else:
                 nodes.externalInput(external[1], up_dev, random.uniform((float(external[3])-dev), float(external[3])+dev)/10.0)
                 #print 'disconfirmado'

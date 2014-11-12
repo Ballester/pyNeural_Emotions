@@ -6,7 +6,7 @@ import networkx as nx
 import matplotlib.pyplot as plot
 
 #Configuration file:
-config = '/home/ballester/Documents/lamsa/pyNeural_Emotions/config/config.ini'
+config = 'config/config.ini'
 
 try:
 	fid = open(config)	
@@ -72,13 +72,14 @@ for i in xrange(n_edges):
 print nodes.node_power
 print nodes.edges_rel
 
-nx.draw(nodes.G)
+nx.draw_circular(nodes.G)
 plot.show()
 time_check_update = time.time()
 time_check_external = time_check_update
 
 while True:
-    aux = time.time()  
+
+    aux = time.time()
     if aux - time_check_update > update_delay:
         time_check_update = aux
         nodes.update(update_deviation)
@@ -87,7 +88,7 @@ while True:
         
     if aux - time_check_external > external_delay:
         time_check_external = aux
-        #feelings.compute(external_deviation, update_deviation, nodes)
+        feelings.compute(external_deviation, update_deviation, nodes)
     	
     	
     

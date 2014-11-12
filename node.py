@@ -43,7 +43,9 @@ class Nodes:
         for i in xrange(len(self.node_level)):
             if aux[i] != -1:
                 self.node_power[i] = float(aux[i]/qt[i])
-                
+            if aux[i] < 0.0:
+                self.node_power[i] = 0.0                
+
                 
         #Normalize by level:
         for i in xrange(max(self.node_level)+1):
