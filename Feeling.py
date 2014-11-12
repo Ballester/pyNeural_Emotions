@@ -14,14 +14,14 @@ class Feelings:
 	
         aux = fid.readline()
         aux = aux.split()
-        bipolar_effect = float(aux[1])
+        self.bipolar_effect = float(aux[1])
 
 
 	#minimal and maximum of the probability involved for confirmation - 0, 10	
     def compute(self, dev, up_dev, nodes, final_input, mag):
         confirm = random.uniform(0.0, 100.0)
-        if confirm > bipolar_effect:
-            #print external[0], '- aqui'
+        if confirm > self.bipolar_effect:
+            print final_input
             return nodes.externalInput(final_input[0], up_dev, random.uniform((float(mag)-dev), float(mag)+dev)/10.0)
         
         else:

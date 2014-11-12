@@ -44,6 +44,7 @@ max_power = float(aux[1])
 aux = fid.readline()
 aux = aux.split()
 n_nodes = int(aux[1])
+print n_nodes
 
 aux = fid.readline()
 aux = aux.split()
@@ -54,7 +55,6 @@ aux = aux.split()
 wt = int(aux[1])
 
 nodes = Nodes(max_power)
-feelings = Feelings()
 external = ExternalInput(external_deviation, update_deviation)
 
 for i in xrange(n_nodes):
@@ -91,8 +91,7 @@ while True:
     if aux - time_check_update > update_delay:
         time_check_update = aux
         nodes.update(update_deviation)
-        print ["%.2f" % elem for elem in nodes.node_power]
-        print nodes.node_power
+        print ["%.3f" % elem for elem in nodes.node_power]
         #print nodes.node_name
         
     if aux - time_check_external > external_check_delay:

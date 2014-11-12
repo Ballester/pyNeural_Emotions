@@ -62,6 +62,7 @@ class Nodes:
                     
                     
     def externalInput(self, feeling, up_dev, power):
+        print feeling
         for i in xrange(len(self.node_name)):
             if self.node_name[i] == feeling:
                 self.node_power[i] += power
@@ -69,8 +70,7 @@ class Nodes:
                 self.update(up_dev)
                 return True
 
-            else:
-                return False
+        return False
             
             
             

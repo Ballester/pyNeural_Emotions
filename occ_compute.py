@@ -6,7 +6,7 @@
 [1] -> events, agents or objects
 [2] -> pleased, displeased, approving, disapproving, liking, disliking
 [3] -> c_others, c_self, s_agent, o_agent
-[4] -> d_other, ud_other, p_relevant, p_irrelevant
+[4] -> d_others, ud_others, p_relevant, p_irrelevant
 
 '''
 
@@ -18,38 +18,40 @@ class OCC:
         self.external_dev = external_deviation
         self.update_dev = update_deviation
         self.compute_list = []
+        self.environment_status = []
+        self.feelings = Feelings()
 
     def performInput(self, nodes):
         if len(self.compute_list) > 0:
             loop = len(self.compute_list)
             for i in xrange(loop):
-                environment_status = self.compute_list.pop(0)
-                return transform(environment_status, nodes)
+                self.environment_status = self.compute_list.pop(0)
+                return self.transform(nodes)
                 
         else:
             return False
         
-    def transform(self, environment_status, nodes):
-        if environment_status[1] == "events":
+    def transform(self, nodes):
+        if self.environment_status[1] == "events":
 
-            if environment_status[2] == "pleased":
-                if environment_status[3] == "c_others":
-                    if environment_status[4] == "d_others":
-                        return self.finalTransform(("happy-for","resentment"), nodes)
+            if self.environment_status[2] == "pleased":
+                if self.environment_status[3] == "c_others":
+                    if self.environment_status[4] == "d_others":
+                        return self.finalTransform(("Happy-for","Resentment"), nodes)
                     
-                    elif environment_status[4] == "ud_other":
-                        return self.finalTransform(("gloating","pity"), nodes)
+                    elif self.environment_status[4] == "ud_others":
+                        return self.finalTransform(("Gloating","Pity"), nodes)
 
                     else:
                         raise NameError('Invalid OCC_package')
 
 
-                elif environment_status[3] == "c_self":
-                    if environment_status[4] == "p_relevant":
-                        return self.finalTransform(("hope","fear"), nodes)
+                elif self.environment_status[3] == "c_self":
+                    if self.environment_status[4] == "p_relevant":
+                        return self.finalTransform(("Hope","Fear"), nodes)
 
-                    elif environment_status[4] == "p_irrelevant":
-                        return self.finalTransform(("joy","distress"), nodes)                        
+                    elif self.environment_status[4] == "p_irrelevant":
+                        return self.finalTransform(("Joy","Distress"), nodes)                        
 
                     else:
                         raise NameError('Invalid OCC_package')
@@ -57,24 +59,24 @@ class OCC:
                 else:
                     raise NameError('Invalid OCC_package')          
             
-            elif environment_status[2] == "displeased":
-                if environment_status[3] == "c_others":
-                    if environment_status[4] == "d_others":
-                        return self.finalTransform(("resentment","happy-for"), nodes)
+            elif self.environment_status[2] == "displeased":
+                if self.environment_status[3] == "c_others":
+                    if self.environment_status[4] == "d_others":
+                        return self.finalTransform(("Resentment","Happy-for"), nodes)
 
-                    elif environment_status[4] == "ud_others":
-                        return self.finalTransform(("pity","gloating"), nodes)                        
+                    elif self.environment_status[4] == "ud_others":
+                        return self.finalTransform(("Pity","Gloating"), nodes)                        
 
                     else:
                         raise NameError('Invalid OCC_package')
 
                 
-                elif environment_status[3] == "c_self":
-                    if environment_status[4] == "p_relevant":
-                        return self.finalTransform(("fear","hope"), nodes)
+                elif self.environment_status[3] == "c_self":
+                    if self.environment_status[4] == "p_relevant":
+                        return self.finalTransform(("Fear","Hope"), nodes)
 
-                    elif environment_status[4] == "p_irrelevant":
-                        return self.finalTransform(("distress","joy"), nodes)
+                    elif self.environment_status[4] == "p_irrelevant":
+                        return self.finalTransform(("Distress","Joy"), nodes)
 
                     else:
                         raise NameError('Invalid OCC_package')
@@ -86,23 +88,23 @@ class OCC:
             else:
                 raise NameError('Invalid OCC_package')
         
-        elif environment_status[1] == "agents":
-            if environment_status[2] == "approving":
-                if environment_status[3] == "s_agent":
-                    return self.finalTransform(("pride","shame"), nodes)                
+        elif self.environment_status[1] == "agents":
+            if self.environment_status[2] == "approving":
+                if self.environment_status[3] == "s_agent":
+                    return self.finalTransform(("Pride","Shame"), nodes)                
 
-                elif environment_status[3] == "o_agent":
-                    return self.finalTransform(("admiration","reproach"), nodes)
+                elif self.environment_status[3] == "o_agent":
+                    return self.finalTransform(("Admiration","Reproach"), nodes)
 
                 else:
                     raise NameError('Invalid OCC_package')
 
-            elif environment_status[2] == "disapproving":
-                if environment_status[3] == "s_agent":
-                    return self.finalTransform(("shame","pride"), nodes)
+            elif self.environment_status[2] == "disapproving":
+                if self.environment_status[3] == "s_agent":
+                    return self.finalTransform(("Shame","Pride"), nodes)
 
-                elif environment_status[3] == "o_agent":
-                    return self.finalTransform(("reproach","admiration"), nodes)
+                elif self.environment_status[3] == "o_agent":
+                    return self.finalTransform(("Reproach","Admiration"), nodes)
     
                 else:
                     raise NameError('Invalid OCC_package')
@@ -112,11 +114,11 @@ class OCC:
             else:
                 raise NameError('Invalid OCC_package')
 
-        elif environment_status[1] == "objects":
-            if environment_status[2] == "liking":
+        elif self.environment_status[1] == "objects":
+            if self.environment_status[2] == "liking":
                 return self.finalTransform(("joy","distress"), nodes)
 
-            elif environment_status[2] == "disliking":
+            elif self.environment_status[2] == "disliking":
                 return self.finalTransform(("distress","joy"), nodes)
 
             else:
@@ -127,7 +129,7 @@ class OCC:
 
 
     def finalTransform(self, final_input, nodes):
-        feelings.compute(self.external_dev, self.update_dev, nodes, final_input, environment_status[0])
+        self.feelings.compute(self.external_dev, self.update_dev, nodes, final_input, self.environment_status[0])
 
 
 

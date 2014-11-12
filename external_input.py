@@ -11,7 +11,7 @@ class ExternalInput:
         
     def checkForExternalInput(self):
         try:
-            fid = open("external_file_" + str(file_counter) + ".in")
+            fid = open("externals/external_file_" + str(self.file_counter) + ".in")
             self.last_input = fid.readline()
             self.last_input = self.last_input.split()
             self.file_counter += 1

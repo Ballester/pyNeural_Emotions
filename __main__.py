@@ -54,7 +54,6 @@ aux = aux.split()
 wt = int(aux[1])
 
 nodes = Nodes(max_power)
-feelings = Feelings()
 external = ExternalInput(external_deviation, update_deviation)
 
 for i in xrange(n_nodes):

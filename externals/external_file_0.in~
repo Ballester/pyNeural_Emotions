@@ -1,0 +1,8 @@
+'''
+[0] -> magnitude
+[1] -> events, agents or objects
+[2] -> pleased, displeased, approving, disapproving, liking, disliking
+[3] -> c_others, c_self, s_agent, o_agent
+[4] -> d_other, ud_other, p_relevant, p_irrelevant
+'''
+2 events pleased c_others ud_others

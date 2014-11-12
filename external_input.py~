@@ -11,16 +11,17 @@ class ExternalInput:
         
     def checkForExternalInput(self):
         try:
-            fid = open("external_file_" + str(file_counter) + ".in")
+            fid = open("externals/external_file_" + str(self.file_counter) + ".in")
             self.last_input = fid.readline()
             self.last_input = self.last_input.split()
             self.file_counter += 1
             self.occ.compute_list.append(self.last_input)
+            print self.last_input, " - last_input"
             return True
             
         except:
             return False
         
-    def performExternalInputs(nodes):    
+    def performExternalInputs(self, nodes):    
         self.occ.performInput(nodes)
     
