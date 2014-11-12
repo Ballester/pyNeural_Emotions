@@ -21,7 +21,7 @@ class OCC:
         self.compute_list = []
 
     def performInput(self, nodes):
-        if len(self.compute_list > 0):
+        if len(self.compute_list) > 0:
             loop = len(self.compute_list)
             for i in xrange(loop):
                 environment_status = self.compute_list.pop(0)

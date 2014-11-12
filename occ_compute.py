@@ -12,7 +12,6 @@
 
 from Feeling import Feelings
 
-
 class OCC:
     
     def __init__(self, external_deviation, update_deviation):

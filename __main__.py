@@ -91,7 +91,7 @@ while True:
     if aux - time_check_update > update_delay:
         time_check_update = aux
         nodes.update(update_deviation)
-        print nodes.node_power
+        print ["%.3f" % elem for elem in nodes.node_power]
         #print nodes.node_name
         
     if aux - time_check_external > external_check_delay:
