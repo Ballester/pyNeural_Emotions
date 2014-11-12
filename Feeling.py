@@ -36,10 +36,10 @@ class Feelings:
             #confirmado
             if aux < float(external[4]):
                 #print external[0], '- aqui'
-                nodes.externalInput(external[0], up_dev, random.uniform((float(external[2])-dev), float(external[2])+dev)/10.0)
+                return nodes.externalInput(external[0], up_dev, random.uniform((float(external[2])-dev), float(external[2])+dev)/10.0)
             
             else:
-                nodes.externalInput(external[1], up_dev, random.uniform((float(external[3])-dev), float(external[3])+dev)/10.0)
+                return nodes.externalInput(external[1], up_dev, random.uniform((float(external[3])-dev), float(external[3])+dev)/10.0)
                 #print 'disconfirmado'
 			
 			

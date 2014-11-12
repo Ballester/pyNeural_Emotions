@@ -6,6 +6,7 @@ import networkx as nx
 #todo: Add thread for external input and update
 class Nodes:
     
+    #Max_power still \todo
     def __init__(self, max_power):
         self.max_power = max_power
         self.G = nx.Graph()
@@ -66,6 +67,10 @@ class Nodes:
                 self.node_power[i] += power
                 print 'Input in node - ', self.node_name[i], ' - ', power
                 self.update(up_dev)
+                return True
+
+            else:
+                return False
             
             
             
