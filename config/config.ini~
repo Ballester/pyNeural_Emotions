@@ -1,4 +1,4 @@
-external_delay 2
+external_check_delay 1
 update_delay 2
 external_deviation 2
 update_deviation 10

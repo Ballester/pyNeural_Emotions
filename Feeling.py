@@ -5,42 +5,19 @@ from node import Nodes
 class Feelings:
 
     def __init__(self):
+        pass
 		#Actual feelings to be inserted
-        self.outside_list = []
-        external_file = 'config/external.in'
-        try:
-            self.fid = open(external_file)
-        except:
-            raise NameError('Wrong external input file path')
-
-
-	#verify the existance of external inputs to be inserted
-    def verifyExternal(self):
-        try:
-            aux = self.fid.readline()
-        except:
-            return False
-			
-        return aux 
-		
-		
-	
 
 	#minimal and maximum of the probability involved for confirmation - 0, 10	
-    def compute(self, dev, up_dev, nodes):
-        external = self.verifyExternal()
-        #print external
-        if external != False:
-            external = external.split()
-            aux = random.uniform(0.0, 100.0)
-            #confirmado
-            if aux < float(external[4]):
-                #print external[0], '- aqui'
-                return nodes.externalInput(external[0], up_dev, random.uniform((float(external[2])-dev), float(external[2])+dev)/10.0)
-            
-            else:
-                return nodes.externalInput(external[1], up_dev, random.uniform((float(external[3])-dev), float(external[3])+dev)/10.0)
-                #print 'disconfirmado'
-			
+    def compute(self, dev, up_dev, nodes, final_input, mag):
+        confirm = random.uniform(0.0, 100.0)
+        if confirm < 95.0:
+            #print external[0], '- aqui'
+            return nodes.externalInput(final_input[0], up_dev, random.uniform((float(mag)-dev), float(mag)+dev)/10.0)
+        
+        else:
+            return nodes.externalInput(final_input[1], up_dev, random.uniform((float(mag)-dev), float(mag)+dev)/10.0)
+            #print 'disconfirmado'
+		
 			
 	

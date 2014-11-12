@@ -2,8 +2,10 @@ import time
 #import Gaussian
 from node import Nodes
 from Feeling import Feelings
+from external_input import ExternalInput
 import networkx as nx
 import matplotlib.pyplot as plot
+
 
 #Configuration file:
 config = 'config/config.ini'
@@ -17,7 +19,11 @@ except:
 #getting the configuration available in the ini
 aux = fid.readline()
 aux = aux.split()
-external_delay = float(aux[1])
+external_check_delay = float(aux[1])
+
+aux = fid.readline()
+aux = aux.split()
+external_up_delay = float(aux[1])
 
 aux = fid.readline()
 aux = aux.split()
@@ -49,6 +55,7 @@ wt = int(aux[1])
 
 nodes = Nodes(max_power)
 feelings = Feelings()
+external = ExternalInput(external_deviation, update_deviation)
 
 for i in xrange(n_nodes):
 	aux = fid.readline()
@@ -76,19 +83,24 @@ nx.draw_circular(nodes.G)
 plot.show()
 time_check_update = time.time()
 time_check_external = time_check_update
+time_check_external_update = time_check_update
 
 while True:
 
     aux = time.time()
-    #if aux - time_check_update > update_delay:
-    time_check_update = aux
-    nodes.update(update_deviation)
-    print nodes.node_power
-    #print nodes.node_name
+    if aux - time_check_update > update_delay:
+        time_check_update = aux
+        nodes.update(update_deviation)
+        print nodes.node_power
+        #print nodes.node_name
         
-    #if aux - time_check_external > external_delay:
-    time_check_external = aux
-    feelings.compute(external_deviation, update_deviation, nodes)
+    if aux - time_check_external > external_check_delay:
+        time_check_external = aux
+        external.checkForExternalInput()
+        
+    if aux - time_check_external_update > external_up_delay:
+        time_check_external_update = aux
+        external.performExternalInputs(nodes)
     	
     	
     
