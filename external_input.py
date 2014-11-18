@@ -42,7 +42,10 @@ class ExternalInput:
             self.last_input = self.fid.readline()
             self.last_input = self.last_input.split()
             self.occ.compute_list.append(self.last_input)
-            return True
+            if len(self.last_input) == 0:
+                return False
+            else:
+                return True
         
         except:
             return False

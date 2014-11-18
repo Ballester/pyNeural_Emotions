@@ -1,8 +1,8 @@
-external_check_delay 3
-external_update_delay 3
+external_check_delay 1
+external_update_delay 1
 external_single_file 1
 update_delay 5
-external_deviation 2
+external_deviation 0.2
 update_deviation 10
 max_power 0.9
 nnodes 14

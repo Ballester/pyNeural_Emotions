@@ -74,9 +74,9 @@ for i in xrange(n_edges):
     nodes.edges_from.append(aux[1])
     nodes.edges_to.append(aux[2])
     #Difference in the time of reading:
-    nodes.edges_rel.append(-float(aux[3])/10**wt + 1)
+    aux_rel = nodes.edges_rel.append(-float(aux[3])/10**wt + 1)
 	    
-    edge = (aux[1], aux[2])
+    edge = (aux[1], aux[2], aux_rel)
     nodes.G.add_edge(*edge)
 
 print nodes.node_power
