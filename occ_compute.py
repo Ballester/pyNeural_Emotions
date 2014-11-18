@@ -4,10 +4,18 @@
 '''
 [0] -> magnitude
 [1] -> events, agents or objects
-[2] -> pleased, displeased, approving, disapproving, liking, disliking
-[3] -> c_others, c_self, s_agent, o_agent
-[4] -> d_others, ud_others, p_relevant, p_irrelevant
+if events:
+    [2] -> pleased, displeased
+    [3] -> c_others, c_self
+    [4] -> d_others, ud_others
 
+if agents:
+    [2] -> approving, disapproving
+    [3] -> s_agent, o_agent
+    [4] -> p_relevant, p_irrelevant
+
+if objects:
+    [2] -> liking, disliking
 '''
 
 from Feeling import Feelings
@@ -116,10 +124,10 @@ class OCC:
 
         elif self.environment_status[1] == "objects":
             if self.environment_status[2] == "liking":
-                return self.finalTransform(("joy","distress"), nodes)
+                return self.finalTransform(("Joy","Distress"), nodes)
 
             elif self.environment_status[2] == "disliking":
-                return self.finalTransform(("distress","joy"), nodes)
+                return self.finalTransform(("Distress","Joy"), nodes)
 
             else:
                 raise NameError('Invalid OCC_package')

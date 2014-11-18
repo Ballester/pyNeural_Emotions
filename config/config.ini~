@@ -1,11 +1,12 @@
 external_check_delay 3
 external_update_delay 3
-update_delay 2
+external_single_file 1
+update_delay 5
 external_deviation 2
 update_deviation 10
 max_power 0.9
-nnodes 10
-nedges 10
+nnodes 14
+nedges 14
 w_threshold 2
 Joy 1 0.7
 Distress 1 0.3
@@ -17,6 +18,14 @@ Resentment 4 0.6
 Happy-for 4 0.4
 Gloating 5 0.05
 Pity 5 0.95
+Pride 6 0.5
+Shame 6 0.5
+Admiration 7 0.5
+Reproach 7 0.5
+edge Pride Shame 2
+edge Shame Pride 2
+edge Admiration Reproach 2
+edge Reproach Admiration 2
 edge Joy Distress 2
 edge Hope Fear 2
 edge Satisfaction Disappointment 2
