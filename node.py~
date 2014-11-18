@@ -70,9 +70,7 @@ class Nodes:
                 self.update(up_dev)
                 return True
 
-            else:
-                return False
-            
+        return False         
             
             
                 

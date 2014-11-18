@@ -27,6 +27,10 @@ external_up_delay = float(aux[1])
 
 aux = fid.readline()
 aux = aux.split()
+external_single_file = int(aux[1])
+
+aux = fid.readline()
+aux = aux.split()
 update_delay = float(aux[1])
 
 aux = fid.readline()
@@ -93,14 +97,20 @@ while True:
         print ["%.3f" % elem for elem in nodes.node_power]
         #print nodes.node_name
         
-    if aux - time_check_external > external_check_delay:
-        time_check_external = aux
-        external.checkForExternalInput()
-        
-    if aux - time_check_external_update > external_up_delay:
-        time_check_external_update = aux
-        external.performExternalInputs(nodes)
-    	
+    if external_single_file == 0:
+        if aux - time_check_external > external_check_delay:
+            time_check_external = aux
+            external.checkForExternalInput()
+            
+        if aux - time_check_external_update > external_up_delay:
+            time_check_external_update = aux
+            external.performExternalInputs(nodes)
+
+    else:
+        if aux - time_check_external > external_check_delay:
+            time_check_external = aux
+            if external.checkForExternalInput() == True:
+                external.performExternalInputs(nodes)
     	
     
     
